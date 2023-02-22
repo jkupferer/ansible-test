@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+  - name: Pause
+    when: pause_minutes is defined or pause_seconds is defined
+    ansible.builtin.pause:
+      minutes: "{{ pause_minutes | default(omit) }}"
+      seconds: "{{ pause_seconds | default(omit) }}"
+... 
